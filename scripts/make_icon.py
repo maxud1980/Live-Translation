@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the live-trans app icon: white headphones on a teal squircle.
+"""Generate the Live Translation app icon: white headphones on a teal squircle.
 
 Matches the in-app logo (accent gradient #14b8a6 -> #0e8f80, headphones glyph).
 Rendered at 4x supersample then downscaled for smooth antialiasing.

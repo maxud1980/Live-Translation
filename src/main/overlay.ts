@@ -117,7 +117,7 @@ export class OverlayController {
       skipTaskbar: true,
       alwaysOnTop: true,
       show: false,
-      title: 'live-trans subtitles',
+      title: 'Live Translation subtitles',
       webPreferences: {
         preload: this.deps.preloadPath,
         sandbox: true,

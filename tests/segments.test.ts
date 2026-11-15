@@ -101,11 +101,11 @@ describe('formatTxt', () => {
 
   test('original + translation, no timecodes', () => {
     expect(formatTxt(session, labels, 'both')).toBe(
-      'live-trans · 2026-10-15 10:00–10:42\nРусский → Українська\n\nКак дела?\n→ Як справи?\n\nЯк вас звати?\n→ —\n'
+      'Live Translation · 2026-10-15 10:00–10:42\nРусский → Українська\n\nКак дела?\n→ Як справи?\n\nЯк вас звати?\n→ —\n'
     )
   })
 
   test('translation only skips untranslated lines', () => {
-    expect(formatTxt(session, labels, 'target')).toBe('live-trans · 2026-10-15 10:00–10:42\nУкраїнська\n\nЯк справи?\n')
+    expect(formatTxt(session, labels, 'target')).toBe('Live Translation · 2026-10-15 10:00–10:42\nУкраїнська\n\nЯк справи?\n')
   })
 })

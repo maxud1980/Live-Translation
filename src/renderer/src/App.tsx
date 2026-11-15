@@ -515,7 +515,7 @@ export default function App(): React.JSX.Element {
               <HeadphonesIcon />
             </div>
             <div className="leading-tight">
-              <h1 className="text-[13px] font-semibold tracking-tight">live-trans</h1>
+              <h1 className="text-[13px] font-semibold tracking-tight">Live Translation</h1>
               <p className="text-[11px] text-faint">
                 {providerInfo(provider).name} · <span className="font-medium text-muted">{targetName}</span>
               </p>

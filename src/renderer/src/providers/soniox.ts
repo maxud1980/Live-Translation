@@ -116,7 +116,7 @@ export class SonioxProvider implements TranslationProvider {
           enable_language_identification: true,
           ...(source ? { language_hints: [source] } : {}),
           translation: { type: 'one_way', target_language: target },
-          client_reference_id: 'live-trans'
+          client_reference_id: 'live-translation'
         })
       )
       // Soniox has no setup acknowledgement; the stream is usable once the config is sent.

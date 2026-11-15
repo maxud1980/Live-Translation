@@ -5,7 +5,7 @@ export type UiLanguage = 'uk' | 'en'
 
 const STRINGS = {
   en: {
-    trayShow: 'Show live-trans',
+    trayShow: 'Show Live Translation',
     trayStart: 'Start translation',
     trayStop: 'Stop translation',
     trayShowSubtitles: 'Show subtitles window',
@@ -23,7 +23,7 @@ const STRINGS = {
     sonioxUnreachable: 'Could not reach Soniox: {detail}'
   },
   uk: {
-    trayShow: 'Показати live-trans',
+    trayShow: 'Показати Live Translation',
     trayStart: 'Почати переклад',
     trayStop: 'Зупинити переклад',
     trayShowSubtitles: 'Показати вікно субтитрів',

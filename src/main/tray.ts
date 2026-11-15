@@ -63,7 +63,7 @@ export class AppTray {
   private rebuild(): void {
     const l = this.labels
     if (!this.tray || !l) return
-    this.tray.setToolTip(`live-trans — ${this.running ? l.tooltipRunning : l.tooltipIdle}`)
+    this.tray.setToolTip(`Live Translation — ${this.running ? l.tooltipRunning : l.tooltipIdle}`)
     this.tray.setContextMenu(
       Menu.buildFromTemplate([
         { label: l.show, click: () => this.deps.onShowWindow() },

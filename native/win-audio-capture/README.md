@@ -1,4 +1,4 @@
-# live-trans-capture (Windows system-audio helper)
+# live-translation-capture (Windows system-audio helper)
 
 The Windows analogue of the macOS [`audiotee`](https://www.npmjs.com/package/audiotee) binary.
 It captures the whole system audio mix **except our own Electron process tree** using the WASAPI
@@ -10,7 +10,7 @@ The main process spawns it and reads the same contract as audiotee:
 - **stderr** — one JSON object per line; errors are `{"message_type":"error","data":{"message":…}}`.
 
 ```
-live-trans-capture.exe --sample-rate 16000 --chunk-duration 0.1 --exclude-process-tree <electron-main-pid>
+live-translation-capture.exe --sample-rate 16000 --chunk-duration 0.1 --exclude-process-tree <electron-main-pid>
 ```
 
 `--exclude-process-tree <pid>` captures everything except that process and its descendants — pass
@@ -31,7 +31,7 @@ cmake -S . -B build -A x64
 cmake --build build --config Release
 ```
 
-The binary lands at `build/Release/live-trans-capture.exe`. That is the path the dev app and
+The binary lands at `build/Release/live-translation-capture.exe`. That is the path the dev app and
 `electron-builder` (via `extraResources` in `electron-builder.yml`) both look for — see
 [`docs/BUILD.md`](../../docs/BUILD.md).
 
@@ -44,7 +44,7 @@ inspect its size (should be ~`sample-rate * 2` bytes/sec, i.e. ~96 KB for 3 s at
 
 ```powershell
 # exclude PID 0 = exclude nothing → captures the full system mix
-build/Release/live-trans-capture.exe --exclude-process-tree 0 > out.pcm
+build/Release/live-translation-capture.exe --exclude-process-tree 0 > out.pcm
 # Ctrl+C after a few seconds, then check the size:
 (Get-Item out.pcm).Length
 ```

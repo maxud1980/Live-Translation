@@ -14,7 +14,7 @@ function fileName(s: ExportSource, mode: ExportMode): string {
   const pad = (n: number): string => String(n).padStart(2, '0')
   const stamp = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}`
   const suffix = mode === 'both' ? `${s.sourceLang}-${s.targetLang}` : mode === 'target' ? s.targetLang : s.sourceLang
-  return `live-trans_${stamp}_${suffix}.txt`
+  return `live-translation_${stamp}_${suffix}.txt`
 }
 
 const OPTIONS: { mode: ExportMode; label: StringKey }[] = [
