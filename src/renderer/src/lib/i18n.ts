@@ -49,7 +49,7 @@ const en = {
   disconnectedReason: 'Disconnected ({code}): {reason}',
   captureError: 'Capture error: {message}',
   micPermission:
-    'Microphone permission is not enabled. Opening System Settings → Privacy & Security → Microphone — enable live-trans there, then restart the app.',
+    'Microphone permission is not enabled. Opening System Settings → Privacy & Security → Microphone — enable Live Translation there, then restart the app.',
   micDenied: 'Microphone permission was denied.',
   micDisconnected: 'The microphone was disconnected.',
   systemCaptureFailed: 'Could not start system audio capture.',
@@ -172,7 +172,7 @@ const uk: Record<StringKey, string> = {
   disconnectedReason: 'Відключено ({code}): {reason}',
   captureError: 'Помилка захоплення звуку: {message}',
   micPermission:
-    'Доступ до мікрофона не надано. Відкриваю Системні параметри → Конфіденційність і безпека → Мікрофон — увімкніть там live-trans і перезапустіть програму.',
+    'Доступ до мікрофона не надано. Відкриваю Системні параметри → Конфіденційність і безпека → Мікрофон — увімкніть там Live Translation і перезапустіть програму.',
   micDenied: 'Доступ до мікрофона відхилено.',
   micDisconnected: 'Мікрофон відключено.',
   systemCaptureFailed: 'Не вдалося запустити захоплення системного звуку.',

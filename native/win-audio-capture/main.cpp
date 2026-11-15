@@ -1,4 +1,4 @@
-// live-trans-capture — Windows system-audio loopback helper.
+// live-translation-capture — Windows system-audio loopback helper.
 //
 // The Windows analogue of the macOS `audiotee` binary. It captures the whole system
 // audio mix EXCEPT a given process tree (our own Electron app), using the WASAPI

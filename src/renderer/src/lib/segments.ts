@@ -217,7 +217,7 @@ export function formatTxt(
   const lines: string[] = []
   const end = new Date(session.endedAt)
   const pad = (n: number): string => String(n).padStart(2, '0')
-  lines.push(`live-trans · ${formatDateTime(session.startedAt)}–${pad(end.getHours())}:${pad(end.getMinutes())}`)
+  lines.push(`Live Translation · ${formatDateTime(session.startedAt)}–${pad(end.getHours())}:${pad(end.getMinutes())}`)
   if (mode === 'both') lines.push(`${labels.source} → ${labels.target}`)
   else lines.push(mode === 'target' ? labels.target : labels.source)
   lines.push('')

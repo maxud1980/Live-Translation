@@ -23,6 +23,12 @@ type Persisted = {
   overlay: OverlaySettings
 }
 
+// The app was called "live-trans" before 0.1.14, and Electron names the userData folder after
+// the app. Keep using the old folder when it exists, so settings, saved keys and history
+// survive the rename; fresh installs get the default "Live Translation" folder.
+const legacyUserData = join(app.getPath('appData'), 'live-trans')
+if (existsSync(legacyUserData)) app.setPath('userData', legacyUserData)
+
 const store = new Store<Persisted>({
   defaults: {
     sourceLang: 'auto',
@@ -84,7 +90,7 @@ let mainWindow: BrowserWindow | null = null
 
 // Diagnostic logging: kept intentionally verbose for troubleshooting microphone/TCC issues.
 // Never log API keys or raw audio payloads.
-const debugLogPath = join(app.getPath('userData'), 'live-trans-debug.log')
+const debugLogPath = join(app.getPath('userData'), 'live-translation-debug.log')
 function debugLog(event: string, data?: unknown): void {
   if (!debugEnabled) return
   const timestamp = new Date().toISOString()
@@ -224,7 +230,7 @@ ipcMain.on('app:status', (_e, status: { running: boolean }) => tray?.setRunning(
 // hears the translated audio we play back (that was the feedback/looping cause). Both backends
 // emit the SAME contract: raw 16 kHz / 16-bit / mono PCM on stdout, JSON log lines on stderr.
 //   - macOS:   audiotee (Core Audio process tap), excluding our audio.mojom.AudioService PID(s).
-//   - Windows: live-trans-capture.exe (WASAPI process loopback), excluding our whole process tree.
+//   - Windows: live-translation-capture.exe (WASAPI process loopback), excluding our whole process tree.
 let audioProc: ChildProcessWithoutNullStreams | null = null
 let captureActive = false
 let pcmLeftover: Buffer<ArrayBufferLike> = Buffer.alloc(0)
@@ -243,8 +249,8 @@ function winCaptureBinaryPath(): string {
   // Packaged via electron-builder `extraResources` (electron-builder.yml) → resources/win-audio-capture/.
   // In dev, the CMake build output sits under the repo at native/win-audio-capture/build/Release/.
   return app.isPackaged
-    ? join(process.resourcesPath, 'win-audio-capture', 'live-trans-capture.exe')
-    : join(app.getAppPath(), 'native', 'win-audio-capture', 'build', 'Release', 'live-trans-capture.exe')
+    ? join(process.resourcesPath, 'win-audio-capture', 'live-translation-capture.exe')
+    : join(app.getAppPath(), 'native', 'win-audio-capture', 'build', 'Release', 'live-translation-capture.exe')
 }
 
 // Resolve the capture command + args for the current platform, or an error string if unsupported
@@ -493,7 +499,7 @@ ipcMain.handle('soniox:createToken', async (): Promise<{ ok: true; token: string
         usage_type: 'transcribe_websocket',
         expires_in_seconds: 120,
         single_use: true,
-        client_reference_id: 'live-trans'
+        client_reference_id: 'live-translation'
       })
     })
     const body = (await res.json().catch(() => ({}))) as {
@@ -709,7 +715,7 @@ ipcMain.handle('history:delete', async (_e, id: string) => {
 })
 
 ipcMain.handle('export:saveText', async (_e, defaultName: string, content: string) => {
-  const safeName = String(defaultName).replace(/[\\/:*?"<>|]+/g, '-').slice(0, 120) || 'live-trans.txt'
+  const safeName = String(defaultName).replace(/[\\/:*?"<>|]+/g, '-').slice(0, 120) || 'live-translation.txt'
   const options = {
     title: t('exportTitle'),
     defaultPath: join(app.getPath('documents'), safeName),

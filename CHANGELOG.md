@@ -1,3 +1,10 @@
+## [0.1.14] — 2026-11-15
+
+### Changed
+- The app is now called **Live Translation** (was live-trans): window and tray titles, installer, `.app` / `.exe` names, macOS permission prompts, export file names and the README. The Windows capture helper is now `live-translation-capture.exe`.
+- The bundle id stays `com.maxud1980.live-trans-remake`, so macOS permissions and the Windows installer's upgrade path are unaffected. Existing settings and history are kept (the old `live-trans` data folder is reused when present).
+- macOS: saved API keys have to be entered once more after updating, because the Keychain entry that encrypts them is tied to the app name.
+
 ## [0.1.13] — 2026-10-15
 
 ### Added

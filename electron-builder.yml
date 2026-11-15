@@ -2,7 +2,7 @@
 # signature, so sharing an id with the original app (signed by a different team) makes the
 # stored consent fail its code requirement and the prompts reappear.
 appId: com.maxud1980.live-trans-remake
-productName: live-trans
+productName: Live Translation
 copyright: Copyright © 2026 minhnhat165
 
 directories:
@@ -40,11 +40,11 @@ mac:
   # APPLE_APP_SPECIFIC_PASSWORD / APPLE_TEAM_ID (see docs/BUILD.md). Ad-hoc builds can't be notarized.
   notarize: false
   extendInfo:
-    NSMicrophoneUsageDescription: live-trans uses your selected microphone as the translation source.
-    NSAudioCaptureUsageDescription: live-trans captures system audio to translate it in real time.
+    NSMicrophoneUsageDescription: Live Translation uses your selected microphone as the translation source.
+    NSAudioCaptureUsageDescription: Live Translation captures system audio to translate it in real time.
 
 dmg:
-  title: live-trans ${version}
+  title: Live Translation ${version}
 
 win:
   icon: build/icon-1024.png
@@ -56,8 +56,8 @@ win:
   # npm dependency, so we copy it in as an extra resource rather than asarUnpack'ing node_modules.
   # In the main process it is resolved at process.resourcesPath/win-audio-capture/.
   extraResources:
-    - from: native/win-audio-capture/build/Release/live-trans-capture.exe
-      to: win-audio-capture/live-trans-capture.exe
+    - from: native/win-audio-capture/build/Release/live-translation-capture.exe
+      to: win-audio-capture/live-translation-capture.exe
 
 nsis:
   oneClick: false

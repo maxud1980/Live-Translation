@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "live-trans",
+      "name": "live-translation",
       "dependencies": {
         "audiotee": "^0.0.7",
         "electron-store": "^8.2.0",

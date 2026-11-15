@@ -45,12 +45,12 @@ electron-builder will: build the app → sign it (hardened runtime + entitlement
 bundled `audiotee` binary → upload to Apple for notarization → staple the ticket. This takes a
 few minutes (notarization waits on Apple's servers).
 
-Output: `release/live-trans-<version>-universal.dmg`.
+Output: `release/Live Translation-<version>-universal.dmg`.
 
 Verify it's properly signed & notarized:
 
 ```bash
-spctl -a -vvv -t install "release/live-trans-$(node -p "require('./package.json').version")-universal.dmg"
+spctl -a -vvv -t install "release/Live Translation-$(node -p "require('./package.json').version")-universal.dmg"
 # → "source=Notarized Developer ID"  means good.
 ```
 
@@ -73,7 +73,7 @@ To check packaging without signing — fast, arm64-only `.app` in `release/mac-a
 
 ```bash
 bun run pack:mac
-open release/mac-arm64/live-trans.app
+open "release/mac-arm64/Live Translation.app"
 ```
 
 ## Distribute
@@ -82,8 +82,8 @@ Upload the `.dmg` to a **GitHub Release**:
 
 ```bash
 gh release create v0.1.0 \
-  "release/live-trans-0.1.0-universal.dmg" \
-  --title "live-trans 0.1.0" \
+  "release/Live Translation-0.1.0-universal.dmg" \
+  --title "Live Translation 0.1.0" \
   --notes "Real-time system-audio translator powered by Gemini 3.5 Live Translate."
 ```
 
@@ -92,7 +92,7 @@ Then link that release in the README and your launch tweet.
 ## Building a Windows installer
 
 The Windows build mirrors macOS but swaps the audio backend: instead of the `audiotee` Swift
-binary it ships **`live-trans-capture.exe`**, our own WASAPI process-loopback helper
+binary it ships **`live-translation-capture.exe`**, our own WASAPI process-loopback helper
 ([`native/win-audio-capture`](../native/win-audio-capture)). It captures the system mix while
 excluding our own process tree — the same no-feedback property the macOS tap gets by excluding the
 audio-service PID.
@@ -110,7 +110,7 @@ audio-service PID.
 ### Build
 
 ```powershell
-# 1) Compile the native capture helper (CMake → build/Release/live-trans-capture.exe)
+# 1) Compile the native capture helper (CMake → build/Release/live-translation-capture.exe)
 bun run build:win-helper
 
 # 2) Build the app + package an NSIS installer (dist:win wraps both steps + electron-builder)
@@ -121,13 +121,13 @@ bun run dist:win
 exe is copied into the installer as an extra resource (`resources/win-audio-capture/`), where the
 main process resolves it at runtime via `process.resourcesPath`.
 
-Output: `release/live-trans Setup <version>.exe`.
+Output: `release/Live Translation Setup <version>.exe`.
 
 To smoke-test packaging without building the installer (unpacked app in `release/win-unpacked/`):
 
 ```powershell
 bun run pack:win
-./release/win-unpacked/live-trans.exe
+& "./release/win-unpacked/Live Translation.exe"
 ```
 
 ### Code signing (optional)
