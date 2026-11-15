@@ -1,4 +1,4 @@
-# Live Trans — Remake
+# Live-Translation
 
 [![License: PolyForm NC 1.0.0](https://img.shields.io/badge/license-PolyForm--NC--1.0.0-blue)](LICENSE)
 
